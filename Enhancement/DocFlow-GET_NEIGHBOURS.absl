@@ -134,9 +134,9 @@ if (rbo2.Count() > 0)
 	
 	linkTableBO2.Add(linkBO2);
 	
-	neighbour.DocumentBONodeKey.content = i.DocuemntKey.AnchorObjectNodeReference.UUID.content.ToString();
-	neighbour.DocumentBONodeFormattedId = i.ID.content.RemoveLeadingZeros();
-	neighbour.BusinessDocumentFlowBOName = "B";
+	neighbour.DocumentBONodeKey.content = a.DocuemntKey.AnchorObjectNodeReference.UUID.content.ToString();
+	neighbour.DocumentBONodeFormattedId = a.ID.content.RemoveLeadingZeros();
+	neighbour.BusinessDocumentFlowBOName = "A";
 	neighbour.BDFNamespaceURI = "http://0010432290-one-off.sap.com/YBZ6QB4LY_";
 	neighbour.DocumentBONode = "Root";
 
