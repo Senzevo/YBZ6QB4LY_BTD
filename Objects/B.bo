@@ -12,4 +12,5 @@ element UUID : UUID;
 
 association ToDocFlow to BusinessDocumentFlow using BusinessDocumentFlowKey;
 association ToC to C;
+association ToA to A;
 }
