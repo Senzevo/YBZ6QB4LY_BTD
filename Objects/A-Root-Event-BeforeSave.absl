@@ -10,6 +10,7 @@ var createBO2 = B.Create(bo2);
 
 createBO2.DocuemntKey.AnchorObjectNodeReference = createBO2.GetObjectNodeReference();
 createBO2.DocuemntKey.AnchorObjectNodeReference.FormattedID = createBO2.ID.content.RemoveLeadingZeros();
+createBO2.ToA = this;
 
 this.ToB = createBO2;
 
