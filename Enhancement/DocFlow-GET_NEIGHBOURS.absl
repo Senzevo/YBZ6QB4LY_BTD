@@ -1,0 +1,139 @@
+﻿import AP.FO.BusinessDocumentFlow.Global;
+import ABSL;
+import AP.FO.BusinessPartner.Global;
+import AP.PDI.bo;
+
+var input = InputData;
+var result : GetBDFReferencesPDI;
+
+var Gig = "1";
+
+var node_formatted_ID;
+var sap_uuid;
+var inptstr = input.DocumentBONode;
+
+var link : BusinessDocumentFlowGetNeighborLinkPDI;
+var linkTable : collectionof BusinessDocumentFlowGetNeighborLinkPDI;
+
+var linkBO1 : BusinessDocumentFlowGetNeighborLinkPDI;
+var linkTableBO1 : collectionof BusinessDocumentFlowGetNeighborLinkPDI;
+
+var linkBO2 : BusinessDocumentFlowGetNeighborLinkPDI;
+var linkTableBO2 : collectionof BusinessDocumentFlowGetNeighborLinkPDI;
+
+var linkBO3 : BusinessDocumentFlowGetNeighborLinkPDI;
+var linkTableBO3 : collectionof BusinessDocumentFlowGetNeighborLinkPDI;
+
+var linkProp : BusinessDocumentFlowPropertyStructureforPDI;
+var linkPropTable : collectionof BusinessDocumentFlowPropertyStructureforPDI;
+
+var linkCt : BusinessDocumentFlowGetNeighborLink;
+var linkCtTable : collectionof BusinessDocumentFlowGetNeighborLink;
+
+var neighbour : BusinessDocumentFlowRegerencesStructurePDI;
+var neighbourTable : collectionof BusinessDocumentFlowRegerencesStructurePDI;
+
+var neighbour2 : BusinessDocumentFlowRegerencesStructurePDI;
+var neighbourTable2 : collectionof BusinessDocumentFlowRegerencesStructurePDI;
+
+foreach (var onenode in inptstr)
+{
+	node_formatted_ID = onenode.DocumentBONodeFormattedId;
+	sap_uuid = onenode.DocumentBONodeKey;
+}
+
+var qbo1 = A.QueryByElements;
+var pbo1 =qbo1.CreateSelectionParams();
+
+pbo1.Add(qbo1.ID.content, "I", "EQ", node_formatted_ID);
+
+var rbo1 = qbo1.Execute(pbo1);
+
+if (rbo1.Count() > 0)
+{
+	var i = rbo1.GetFirst();
+	var a = i.ToB;
+
+	linkBO1.DocumentBONodeKey.content = i.DocuemntKey.AnchorObjectNodeReference.UUID.content.ToString();
+	linkBO1.DocumentBONodeFormattedId = i.ID.content.RemoveLeadingZeros();
+	linkBO1.BusinessDocumentFlowBOName = "A";
+	linkBO1.BDFNamespaceURI = "http://0010432290-one-off.sap.com/YBZ6QB4LY_";
+	linkBO1.DocumentBONode = "Root";
+	linkBO1.BusinessDocumentRelationshipTypeCode = "8";
+	linkBO1.RoleCodeAnchor = "1";
+	linkBO1.RoleCodeNeighbor = "2";
+	
+	linkTableBO1.Add(linkBO1);
+
+
+	neighbour.DocumentBONodeKey.content = a.DocuemntKey.AnchorObjectNodeReference.UUID.content.ToString();
+	neighbour.DocumentBONodeFormattedId = a.ID.content.RemoveLeadingZeros();
+	neighbour.BusinessDocumentFlowBOName = "BusinessObject2";
+	neighbour.BDFNamespaceURI = "http://0010432290-one-off.sap.com/YBZ6QB4LY_";
+	neighbour.DocumentBONode = "Root";
+
+
+	linkProp.PropertyID = "GDT_GLOBAL_DATE_TIME";
+	linkProp.PropertyValue.Timepoint.DateTime.content = "20180101111111";
+	linkProp.PropertyValue.Timepoint.TypeCode = "4";
+	linkProp.SpecialPropertyIndicator = "2";
+	
+	linkPropTable.Add(linkProp);
+
+	Trace.Info("I", "BO1 NodeKey : " + neighbour.DocumentBONodeKey.content);
+
+	neighbour.TableOfPDINeighbors.Add(linkTableBO2);	
+	neighbour.TableOfProperties.Add(linkPropTable);
+	neighbourTable.Add(neighbour);
+	result.Neighbors.Add(neighbourTable);
+}
+
+
+var qbo2 = B.QueryByElements;
+var pbo2 =qbo2.CreateSelectionParams();
+
+pbo2.Add(qbo2.ID.content, "I", "EQ", node_formatted_ID);
+
+var rbo2 = qbo2.Execute(pbo2);
+
+if (rbo2.Count() > 0)
+{
+	var i = rbo2.GetFirst();
+	var a = i.ToC;
+
+	linkBO2.DocumentBONodeKey.content = i.DocuemntKey.AnchorObjectNodeReference.UUID.content.ToString();
+	linkBO2.DocumentBONodeFormattedId = i.ID.content.RemoveLeadingZeros();
+	linkBO2.BusinessDocumentFlowBOName = "BusinessObject2";
+	linkBO2.BDFNamespaceURI = "http://0010432290-one-off.sap.com/YBZ6QB4LY_";
+	linkBO2.DocumentBONode = "Root";
+	linkBO2.BusinessDocumentRelationshipTypeCode = "8";
+	linkBO2.RoleCodeAnchor = "1";
+	linkBO2.RoleCodeNeighbor = "2";
+	
+	linkTableBO2.Add(linkBO2);
+
+
+	neighbour.DocumentBONodeKey.content = a.DocuemntKey.AnchorObjectNodeReference.UUID.content.ToString();
+	neighbour.DocumentBONodeFormattedId = a.ID.content.RemoveLeadingZeros();
+	neighbour.BusinessDocumentFlowBOName = "BusinessObject3";
+	neighbour.BDFNamespaceURI = "http://0010432290-one-off.sap.com/YBZ6QB4LY_";
+	neighbour.DocumentBONode = "Root";
+
+
+	linkProp.PropertyID = "GDT_GLOBAL_DATE_TIME";
+	linkProp.PropertyValue.Timepoint.DateTime.content = "20180101111111";
+	linkProp.PropertyValue.Timepoint.TypeCode = "4";
+	linkProp.SpecialPropertyIndicator = "2";
+	
+	linkPropTable.Add(linkProp);
+
+	Trace.Info("I", "BO1 NodeKey : " + neighbour.DocumentBONodeKey.content);
+
+	neighbour2.TableOfPDINeighbors.Add(linkTableBO2);	
+	neighbour2.TableOfProperties.Add(linkPropTable);
+	neighbourTable2.Add(neighbour2);
+	result.Neighbors.Add(neighbourTable2);
+}
+
+return result;
+

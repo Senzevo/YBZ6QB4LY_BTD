@@ -1,0 +1,24 @@
+﻿import ABSL;
+import AP.FO.BusinessDocumentFlow.Global;
+
+var bo2 : elementsof B;
+
+bo2.ID.content = UUID.Generate();
+bo2.RandomText.content = bo2.ID.content.RemoveLeadingZeros();
+
+var createBO2 = B.Create(bo2);
+
+createBO2.DocuemntKey.AnchorObjectNodeReference = createBO2.GetObjectNodeReference();
+createBO2.DocuemntKey.AnchorObjectNodeReference.FormattedID = createBO2.ID.content.RemoveLeadingZeros();
+
+this.ToB = createBO2;
+
+this.DocuemntKey.AnchorObjectNodeReference = this.GetObjectNodeReference();
+this.DocuemntKey.AnchorObjectNodeReference.FormattedID = this.ID.content.RemoveLeadingZeros();
+
+var docFlow = BusinessDocumentFlow.Retrieve(this.DocuemntKey);
+
+this.ToDocFlow = docFlow;
+this.UUID = this.DocuemntKey.AnchorObjectNodeReference.UUID;
+
+var test = "GIG";

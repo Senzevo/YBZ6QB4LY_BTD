@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# CopernicusIsolatedShell Solution File, Format Version 11.00
+Project("{AC959CD1-5A2C-4306-BE72-259804B01F08}") = "BTD (In Development)", "YBZ6QB4LY.myproj", "{B3647045-4A4F-4C2B-9CE0-254A071CB3D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3647045-4A4F-4C2B-9CE0-254A071CB3D9}.Debug|x86.ActiveCfg = Debug|x86
+		{B3647045-4A4F-4C2B-9CE0-254A071CB3D9}.Debug|x86.Build.0 = Debug|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

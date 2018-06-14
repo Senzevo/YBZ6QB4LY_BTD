@@ -1,0 +1,15 @@
+﻿import AP.Common.GDT as apCommonGDT;
+import AP.FO.BusinessDocumentFlow.Global;
+
+businessobject C raises GenInfo{
+
+message GenInfo text "&1": LANGUAGEINDEPENDENT_EXTENDED_Text;
+[AlternativeKey] element ID : BusinessTransactionDocumentID;
+
+element RandomText : Description;
+element DocuemntKey : BusinessDocumentFlowKey;
+element UUID : UUID;
+
+association ToDocFlow to BusinessDocumentFlow using BusinessDocumentFlowKey;
+
+}

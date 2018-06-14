@@ -1,0 +1,16 @@
+﻿import ABSL;
+import AP.FO.BusinessDocumentFlow.Global;
+
+var bo3 : elementsof C;
+
+bo3.ID.content = UUID.Generate().ToString(); 
+bo3.RandomText.content = bo3.ID.content.RemoveLeadingZeros();
+
+var createBO3 = C.Create(bo3);
+
+createBO3.DocuemntKey.AnchorObjectNodeReference = createBO3.GetObjectNodeReference();
+createBO3.DocuemntKey.AnchorObjectNodeReference.FormattedID = createBO3.ID.content.RemoveLeadingZeros();
+
+this.ToC = createBO3;
+
+var test = "GIG";
