@@ -76,11 +76,11 @@ if (rbo1.Count() > 0)
 	
 	linkTableBO1.Add(linkBO2);
 
-	neighbour.DocumentBONodeKey.content = a.DocuemntKey.AnchorObjectNodeReference.UUID.content.ToString();
-	neighbour.DocumentBONodeFormattedId = a.ID.content.RemoveLeadingZeros();
-	neighbour.BusinessDocumentFlowBOName = "B";
-	neighbour.BDFNamespaceURI = "http://0010432290-one-off.sap.com/YBZ6QB4LY_";
-	neighbour.DocumentBONode = "Root";
+	//neighbour.DocumentBONodeKey.content = a.DocuemntKey.AnchorObjectNodeReference.UUID.content.ToString();
+	//neighbour.DocumentBONodeFormattedId = a.ID.content.RemoveLeadingZeros();
+	//neighbour.BusinessDocumentFlowBOName = "B";
+	//neighbour.BDFNamespaceURI = "http://0010432290-one-off.sap.com/YBZ6QB4LY_";
+	//neighbour.DocumentBONode = "Root";
 	 
 
 	linkProp.PropertyID = "GDT_GLOBAL_DATE_TIME";
