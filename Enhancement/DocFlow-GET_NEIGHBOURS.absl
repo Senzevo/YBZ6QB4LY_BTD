@@ -122,7 +122,17 @@ if (rbo2.Count() > 0)
 	
 	linkTableBO2.Add(linkBO2);
 
-
+	linkBO2.DocumentBONodeKey.content = a.DocuemntKey.AnchorObjectNodeReference.UUID.content.ToString();
+	linkBO2.DocumentBONodeFormattedId = a.ID.content.RemoveLeadingZeros();
+	linkBO2.BusinessDocumentFlowBOName = "C";
+	linkBO2.BDFNamespaceURI = "http://0010432290-one-off.sap.com/YBZ6QB4LY_";
+	linkBO2.DocumentBONode = "Root";
+	linkBO2.BusinessDocumentRelationshipTypeCode = "8";
+	linkBO2.RoleCodeAnchor = "1";
+	linkBO2.RoleCodeNeighbor = "2";
+	
+	linkTableBO2.Add(linkBO2);
+	
 	neighbour.DocumentBONodeKey.content = a.DocuemntKey.AnchorObjectNodeReference.UUID.content.ToString();
 	neighbour.DocumentBONodeFormattedId = a.ID.content.RemoveLeadingZeros();
 	neighbour.BusinessDocumentFlowBOName = "C";
